@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="mvcAssignmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Airplanes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="AirplaneType" Type="int" />
+          <Property Name="maxpass" Type="int" />
+          <Property Name="size" Type="int" />
+          <Property Name="currentAirport" Type="int" />
+          <Property Name="currentpilot" Type="int" />
+          <Property Name="currentcopilot" Type="int" />
+        </EntityType>
+        <EntityType Name="Airports">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="city" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblAirplaneType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblpilots">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="AirplaneType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Airplanes__Airpl__164452B1">
+          <End Role="tblAirplaneType" Type="Self.tblAirplaneType" Multiplicity="0..1" />
+          <End Role="Airplanes" Type="Self.Airplanes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAirplaneType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Airplanes">
+              <PropertyRef Name="AirplaneType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Airplanes__curre__173876EA">
+          <End Role="Airports" Type="Self.Airports" Multiplicity="0..1" />
+          <End Role="Airplanes" Type="Self.Airplanes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Airports">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Airplanes">
+              <PropertyRef Name="currentAirport" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Airplanes__curre__182C9B23">
+          <End Role="tblpilots" Type="Self.tblpilots" Multiplicity="0..1" />
+          <End Role="Airplanes" Type="Self.Airplanes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblpilots">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Airplanes">
+              <PropertyRef Name="currentpilot" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Airplanes__curre__1920BF5C">
+          <End Role="tblpilots" Type="Self.tblpilots" Multiplicity="0..1" />
+          <End Role="Airplanes" Type="Self.Airplanes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblpilots">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Airplanes">
+              <PropertyRef Name="currentcopilot" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="mvcAssignmentModelStoreContainer">
+          <EntitySet Name="Airplanes" EntityType="Self.Airplanes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Airports" EntityType="Self.Airports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAirplaneType" EntityType="Self.tblAirplaneType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblpilots" EntityType="Self.tblpilots" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Airplanes__Airpl__164452B1" Association="Self.FK__Airplanes__Airpl__164452B1">
+            <End Role="tblAirplaneType" EntitySet="tblAirplaneType" />
+            <End Role="Airplanes" EntitySet="Airplanes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Airplanes__curre__173876EA" Association="Self.FK__Airplanes__curre__173876EA">
+            <End Role="Airports" EntitySet="Airports" />
+            <End Role="Airplanes" EntitySet="Airplanes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Airplanes__curre__182C9B23" Association="Self.FK__Airplanes__curre__182C9B23">
+            <End Role="tblpilots" EntitySet="tblpilots" />
+            <End Role="Airplanes" EntitySet="Airplanes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Airplanes__curre__1920BF5C" Association="Self.FK__Airplanes__curre__1920BF5C">
+            <End Role="tblpilots" EntitySet="tblpilots" />
+            <End Role="Airplanes" EntitySet="Airplanes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="mvcAssignmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Airplanes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AirplaneType" Type="Int32" />
+          <Property Name="maxpass" Type="Int32" />
+          <Property Name="size" Type="Int32" />
+          <Property Name="currentAirport" Type="Int32" />
+          <Property Name="currentpilot" Type="Int32" />
+          <Property Name="currentcopilot" Type="Int32" />
+          <NavigationProperty Name="tblAirplaneType" Relationship="Self.FK__Airplanes__Airpl__164452B1" FromRole="Airplanes" ToRole="tblAirplaneType" />
+          <NavigationProperty Name="Airports" Relationship="Self.FK__Airplanes__curre__173876EA" FromRole="Airplanes" ToRole="Airports" />
+          <NavigationProperty Name="tblpilots" Relationship="Self.FK__Airplanes__curre__182C9B23" FromRole="Airplanes" ToRole="tblpilots" />
+          <NavigationProperty Name="tblpilots1" Relationship="Self.FK__Airplanes__curre__1920BF5C" FromRole="Airplanes" ToRole="tblpilots" />
+        </EntityType>
+        <EntityType Name="Airports">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Airplanes" Relationship="Self.FK__Airplanes__curre__173876EA" FromRole="Airports" ToRole="Airplanes" />
+        </EntityType>
+        <EntityType Name="AirplaneType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Airplanes" Relationship="Self.FK__Airplanes__Airpl__164452B1" FromRole="tblAirplaneType" ToRole="Airplanes" />
+        </EntityType>
+        <EntityType Name="pilots">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AirplaneType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Airplanes" Relationship="Self.FK__Airplanes__curre__182C9B23" FromRole="tblpilots" ToRole="Airplanes" />
+          <NavigationProperty Name="Airplanes1" Relationship="Self.FK__Airplanes__curre__1920BF5C" FromRole="tblpilots" ToRole="Airplanes" />
+        </EntityType>
+        <Association Name="FK__Airplanes__Airpl__164452B1">
+          <End Role="tblAirplaneType" Type="mvcAssignmentModel.AirplaneType" Multiplicity="0..1" />
+          <End Role="Airplanes" Type="Self.Airplanes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAirplaneType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Airplanes">
+              <PropertyRef Name="AirplaneType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Airplanes__curre__173876EA">
+          <End Role="Airports" Type="Self.Airports" Multiplicity="0..1" />
+          <End Role="Airplanes" Type="Self.Airplanes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Airports">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Airplanes">
+              <PropertyRef Name="currentAirport" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Airplanes__curre__182C9B23">
+          <End Role="tblpilots" Type="mvcAssignmentModel.pilots" Multiplicity="0..1" />
+          <End Role="Airplanes" Type="Self.Airplanes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblpilots">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Airplanes">
+              <PropertyRef Name="currentpilot" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Airplanes__curre__1920BF5C">
+          <End Role="tblpilots" Type="mvcAssignmentModel.pilots" Multiplicity="0..1" />
+          <End Role="Airplanes" Type="Self.Airplanes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblpilots">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Airplanes">
+              <PropertyRef Name="currentcopilot" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="mvcAssignmentEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Airplanes" EntityType="Self.Airplanes" />
+          <EntitySet Name="Airports" EntityType="Self.Airports" />
+          <EntitySet Name="tblAirplaneType" EntityType="mvcAssignmentModel.AirplaneType" />
+          <EntitySet Name="tblpilots" EntityType="mvcAssignmentModel.pilots" />
+          <AssociationSet Name="FK__Airplanes__Airpl__164452B1" Association="Self.FK__Airplanes__Airpl__164452B1">
+            <End Role="tblAirplaneType" EntitySet="tblAirplaneType" />
+            <End Role="Airplanes" EntitySet="Airplanes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Airplanes__curre__173876EA" Association="Self.FK__Airplanes__curre__173876EA">
+            <End Role="Airports" EntitySet="Airports" />
+            <End Role="Airplanes" EntitySet="Airplanes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Airplanes__curre__182C9B23" Association="Self.FK__Airplanes__curre__182C9B23">
+            <End Role="tblpilots" EntitySet="tblpilots" />
+            <End Role="Airplanes" EntitySet="Airplanes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Airplanes__curre__1920BF5C" Association="Self.FK__Airplanes__curre__1920BF5C">
+            <End Role="tblpilots" EntitySet="tblpilots" />
+            <End Role="Airplanes" EntitySet="Airplanes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="mvcAssignmentModelStoreContainer" CdmEntityContainer="mvcAssignmentEntities">
+          <EntitySetMapping Name="Airplanes">
+            <EntityTypeMapping TypeName="mvcAssignmentModel.Airplanes">
+              <MappingFragment StoreEntitySet="Airplanes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="AirplaneType" ColumnName="AirplaneType" />
+                <ScalarProperty Name="maxpass" ColumnName="maxpass" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="currentAirport" ColumnName="currentAirport" />
+                <ScalarProperty Name="currentpilot" ColumnName="currentpilot" />
+                <ScalarProperty Name="currentcopilot" ColumnName="currentcopilot" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Airports">
+            <EntityTypeMapping TypeName="mvcAssignmentModel.Airports">
+              <MappingFragment StoreEntitySet="Airports">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="city" ColumnName="city" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAirplaneType">
+            <EntityTypeMapping TypeName="mvcAssignmentModel.AirplaneType">
+              <MappingFragment StoreEntitySet="tblAirplaneType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblpilots">
+            <EntityTypeMapping TypeName="mvcAssignmentModel.pilots">
+              <MappingFragment StoreEntitySet="tblpilots">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="AirplaneType" ColumnName="AirplaneType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

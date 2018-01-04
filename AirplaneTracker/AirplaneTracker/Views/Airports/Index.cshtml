@@ -1,0 +1,62 @@
+﻿@using AirplaneTracker.Models;
+@model IEnumerable<Airports>
+
+@{ 
+    ViewBag.Title = "Welcome to Airport Page";
+}
+<div style="font-family:Arial">
+<h2>Welcome to Airport Page</h2>
+    @*<ul>
+       @*foreach (Airports airport )
+       
+    </ul>*@
+
+
+
+
+
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table" style="border:groove;background-color:silver">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.city)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+
+                             @Html.DisplayFor(modelItem => item.name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.city)
+                        
+
+                    </td>
+             
+                       
+                    <td>
+                       
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                     @* the following link sends the airport id to be compared with the airplne currentAirport column , AirportsAirplanes action of Airplanes controller *@
+                        @Html.ActionLink("Details ", "AirportsAirplanes", "Airplanes" ,new { id = item.id },null)|
+                    
+                          @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                      </td>
+
+                  </tr>
+              }
+
+          </table>
+
+
+    </div>

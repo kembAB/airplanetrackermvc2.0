@@ -1,0 +1,53 @@
+﻿
+@model AirplaneTracker.Models.Airports
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Airports</h4>
+    <hr />
+    @Html.DisplayForModel()
+    @*<dt>
+        @Html.DisplayNameFor(model => model.name)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.name)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.city)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.city)
+    </dd>*@
+
+
+
+
+
+    @*@Html.DisplayForModel()
+            @foreach (Airports model in @Model)
+            {
+                <li>
+                    <h2> LIst of airplanes in this airport is </h2>
+                    @Html.ActionLink(model.name, "Index", "Airplanes", new { id = model.id })
+
+
+                </li>
+            }
+
+
+        </div>*@
+
+    <p>
+
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

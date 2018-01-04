@@ -1,0 +1,79 @@
+﻿@using AirplaneTracker.Models;
+@model IEnumerable<Airplanes>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+@{
+    ViewBag.Title = "Welcome to Airplanes Page";
+}
+
+<h2>Welcome to Airplanes Page</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table id="table1" class="table">
+    
+    <tr>
+        <th>
+          @* @Html.LabelFor(model => model.pilots.name, "currentpilot", htmlAttributes: new { @class = "control-label col-md-2" })*@
+            @*@Html.LabelFor(model => model.name,"myname")*@
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.maxpass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.size)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblAirplaneType.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Airports.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblpilots.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblpilots1.name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.maxpass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tblAirplaneType.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Airports.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tblpilots.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tblpilots1.name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id }) |
+                @Html.ActionLink("Transfer Airplane", "TransferAirplane","Airplanes", new { id = item.id },null)
+            </td>
+
+        </tr>
+
+    }
+
+</table>

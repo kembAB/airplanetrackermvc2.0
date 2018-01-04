@@ -1,0 +1,74 @@
+﻿@model AirplaneTracker.Models.Airplanes
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Airplanes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.maxpass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maxpass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.size)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblAirplaneType.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblAirplaneType.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Airports.name)
+        </dt>
+      
+        <dd>
+            @Html.DisplayFor(model => model.Airports.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblpilots.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblpilots.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblpilots1.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblpilots1.name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
